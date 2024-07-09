@@ -13,6 +13,12 @@ body {
     color: #003800
 }
 
+/*---------------------------------------Special and global */
+
+button {
+    padding: 5px;
+}
+
 
 /*---------------------------------------Header and Logo */
 
@@ -27,6 +33,7 @@ header {
     font-size: 200%;
     text-transform: uppercase;
     margin-left: 20px;
+    margin-top: 10px;
     color: #F8FFF8;
     float: left;
 }
@@ -34,22 +41,49 @@ header {
 #open-rules {
     float: right;
     margin-right: 20px;
+    margin-top: 5px;
     text-transform: uppercase;
 }
 
 #logo, #open-rules {
-    line-height: 50px;
+    line-height: 30px;
+    
 }
 
 /*---------------------------------------how to play instructions */
 
 #rules {
-    background-color: 0058CC;
+    background-color: #0058CC;
     color: #F8FFF8;
     font-family: inherit;
     text-align: center;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     max-width: 1050px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     
+}
+
+/*--------------------------------------- footer */
+
+footer {
+    background-color: #0058CC;
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+}
+
+#owner {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 50px;
+}
+
+#link {
+    color: #F8FFF8;
+    text-decoration: none;
 }
