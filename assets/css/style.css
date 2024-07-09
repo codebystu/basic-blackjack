@@ -1,3 +1,55 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0; 
+}
+
+/*---------------------------------------Colors */
+
 body {
     background-color: #5EC277;
+    color: #003800
+}
+
+
+/*---------------------------------------Header and Logo */
+
+header {
+    background-color: #0058CC;
+    height: 50px;
+}  
+
+#logo {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 200%;
+    text-transform: uppercase;
+    margin-left: 20px;
+    color: #F8FFF8;
+    float: left;
+}
+
+#open-rules {
+    float: right;
+    margin-right: 20px;
+    text-transform: uppercase;
+}
+
+#logo, #open-rules {
+    line-height: 50px;
+}
+
+/*---------------------------------------how to play instructions */
+
+#rules {
+    background-color: 0058CC;
+    color: #F8FFF8;
+    font-family: inherit;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1050px;
+    
 }
