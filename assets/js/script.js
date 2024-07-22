@@ -1,14 +1,18 @@
 // pause for page load
 
-// How to play slider
-function showRules() {
-    const overlay = document.getElementById("rules");
-    if (overlay.style.display === "none") {
-      overlay.style.display = "block";
-    } else {
-      overlay.style.display = "none";
-    }
+// How to play show and hide
+function openRules() {
+    document.getElementById("rules").style.display = "block";
   }
+  let open = document.getElementById("open-rules");
+    open.addEventListener('click', openRules);
+  
+  
+  function closeRules() {
+    document.getElementById("rules").style.display = "none";
+  }
+  let close = document.getElementById("close-rules"); 
+    close.addEventListener('click', closeRules);
 
 // New game button and initialise game
 
