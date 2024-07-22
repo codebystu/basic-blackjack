@@ -1,6 +1,14 @@
 // pause for page load
 
 // How to play slider
+function showRules() {
+    const overlay = document.getElementById("rules");
+    if (overlay.style.display === "none") {
+      overlay.style.display = "block";
+    } else {
+      overlay.style.display = "none";
+    }
+  }
 
 // New game button and initialise game
 
