@@ -1,9 +1,10 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     border: 0; 
+    font-family: "Oswald", sans-serif;
 }
 
 /*---------------------------------------Colors */
@@ -28,7 +29,7 @@ header {
 }  
 
 #logo {
-    font-family: "Poppins", sans-serif;
+    font-family: inherit
     font-weight: 500;
     font-size: 200%;
     text-transform: uppercase;
@@ -75,10 +76,57 @@ header {
     height: 60vh;
     width: 80vw;
     border: 5px solid black;
+    border-radius: 5px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5vh;
+}
+
+.card-area {
+    height: 10vh;
+    text-align: center;
+}
+
+#dealer-cards {
+    margin-bottom: 10vh;
+}
+
+#stake {
+    margin-top: 2vh;
+}
+
+.cashbox, .game-btns {
+    height: 5vh;
+    text-align: center;
+}
+
+.card {
+    height: 10vh;
+    width: 8vh;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 10vh;
+    background-color: white;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    line-height: 10vh;
+
+}
+
+.bank {
+    height: 5vh;
+    width: 10vh;
+    background-color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#new-game {
+    text-align: center;
+    margin-top: 2vh;
 }
 
 /*--------------------------------------- footer */
@@ -101,4 +149,11 @@ footer {
 #link {
     color: #F8FFF8;
     text-decoration: none;
+}
+
+@media screen and (max-width: 450px) {
+#logo {
+    font-size: 100%;
+}
+    
 }
