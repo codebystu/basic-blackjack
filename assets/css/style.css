@@ -89,16 +89,20 @@ header {
 }
 
 #dealer-cards {
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
 }
 
-#stake {
+#message-box {
     margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 
-.cashbox, .game-btns {
+#chip-buttons {
+    margin-top: 5px;
+}
+
+#stake, .game-btns {
     height: 5vh;
-    text-align: center;
 }
 
 .card {
@@ -114,14 +118,34 @@ header {
 
 }
 
-.bank {
+.stakebox {
+    height: 5vh;
+    border-radius: 50%;
+    background-color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 2px solid black;
+}
+
+.chipbox {
+    height: 5vh;
+    border-radius: 50%;
+    background-color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 2px solid black;
+}
+
+.cashbox {
     height: 5vh;
     width: 10vh;
     background-color: white;
     margin-left: 5px;
-    margin-right: 5px;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border: 2px solid black;
 }
 
 #new-game {
