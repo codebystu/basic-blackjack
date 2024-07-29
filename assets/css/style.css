@@ -97,11 +97,11 @@ header {
     margin-bottom: 2vh;
 }
 
-#chip-buttons {
+#bankroll, .game-btns {
     margin-top: 5px;
 }
 
-#stake, .game-btns {
+#stake, .chipbtn, .playerbtn {
     height: 5vh;
 }
 
@@ -127,7 +127,11 @@ header {
     border: 2px solid black;
 }
 
-.chipbox {
+#chip-buttons, #player-buttons {
+    display: none;
+}
+
+.chipbtn, .playerbtn {
     height: 5vh;
     border-radius: 50%;
     background-color: white;
@@ -138,7 +142,7 @@ header {
     border: 2px solid black;
 }
 
-.cashbox {
+#cashbox {
     height: 5vh;
     width: 10vh;
     background-color: white;

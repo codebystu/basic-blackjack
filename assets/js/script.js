@@ -15,6 +15,13 @@ function openRules() {
     close.addEventListener('click', closeRules);
 
 // New game button and initialise game
+function newGame() {
+  var bankValue = 100;
+  let displayBank = document.getElementById("cashbox");
+  displayBank.textContent = bankValue;
+}
+let startGame = document.getElementById("new-game");
+startGame.addEventListener('click', newGame);
 
 // stake placing inc comparison with bank
 

@@ -22,14 +22,14 @@
             the clear button will clear your stake back to 0</p>
         <p>When happy with your stake, hit the deal button</p>
         <br>
-        <p>You are dealt 2 cards face up, the dealer is dealt 1 card face up and 1 face down</p>
+        <p>You are dealt 2 cards face up, the dealer is dealt 1 card</p>
         <p>To get another card click the Hit button, if you are happy with your hand click Stand</p>
         <p>If you go over 21 you have Bust and lose your stake immediately</p>
         <br>
         <p>The dealer will then take their turn, dealer hits on 16 and stands on 17</p>
         <br>
         <p>If you win you get your stake returned plus the same again</p>
-        <p>If you get 21 in your first 2 cards you have Blackjack and are paid 3 x winnings</p>
+        <p>If you get 21 in your first 2 cards you have Blackjack and are paid 3 x stake</p>
         <br>
         <p>Game ends when your bankroll gets to £0</p>
         <br>
@@ -53,7 +53,7 @@
         <!-- End How to play button -->
     </header>
         <!--End Header-->
-   
+    <!-- Start game area-->
     <div id="game-container">
         <div id="game-area">
             <div>Dealer Cards</div>
@@ -74,20 +74,21 @@
                </p>
             </div>
             <div id="chip-buttons" class="game-btns">
-                <span class="chipbox">Deal</span><span class="chipbox">1</span><span class="chipbox">2</span><span class="chipbox">5</span>
-                <span class="chipbox">Max</span><span class="chipbox">Clear</span>
+                <span class="chipbtn deal">Deal</span><span class="chipbtn one">1</span><span class="chipbtn two">2</span>
+                <span class="chipbtn five">5</span><span class="chipbtn max">Max</span><span class="chipbtn clear">Clear</span>
             </div>
             <div id="player-buttons" class="game-btns">
-                <span class="chipbox">Hit</span><span class="chipbox">Stand</span>
+                <span class="playerbtn hit">Hit</span><span class="playerbtn stand">Stand</span>
             </div>
             <div id="bankroll">
-                <p>Bankroll <span class="cashbox">100</span>
+                <p>Bankroll <span id="cashbox"></span>
             </div>
         </div>
         <div id="new-game">
             <button>New Game</button>
         </div>
-    </div>    
+    </div> 
+    <!-- End game area-->   
     <footer>
         <p id="owner">
             <a href="#" id="link">Codebystu</a>
