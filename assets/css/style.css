@@ -118,7 +118,7 @@ header {
 
 }
 
-.stakebox {
+#stakebox {
     height: 5vh;
     border-radius: 50%;
     background-color: white;

@@ -16,15 +16,15 @@ function openRules() {
 
 // New game button and initialise game
 function newGame() {
-  var bankValue = 100;
+  // var bankValue = 100;
   let displayBank = document.getElementById("cashbox");
-  displayBank.textContent = bankValue;
+  displayBank.textContent = 100;
   newHand();
 }
 let startGame = document.getElementById("new-game");
 startGame.addEventListener('click', newGame);
 
-// clears cards from table, restes hand arrays and displays buttons for placing stakes
+// clears cards from table, resets hand arrays and displays buttons for placing stakes
 function newHand() {
   var playerHand = [];
   var dealerHand = [];
@@ -36,11 +36,31 @@ for (const el of clear) {
 }
   document.getElementById("message-box").textContent = "Place your bet";
   document.getElementById("chip-buttons").style.display = "block";
+  placeBet();
+};
 
+// staking buttons and event listener
 
-}
+function placeBet() {
+ 
+let buttons = document.getElementsByClassName("chipbtn");
 
-// deal button and event listener
+  for (let button of buttons) {
+    button.addEventListener("click", function() {
+      if (this.getAttribute("data-type") === "addchips") {
+        incrementStake();
+    } else if (this.getAttribute("data-type") === "subtractchips") {
+        reduceStake();
+    } else if (this.getAttribute("data-type") === "all-in") {
+        maxStake();
+    } else if (this.getAttribute("data-type") === "reset") {
+        resetStake();
+    } else {
+        dealCards();
+    }
+  })
+  }
+};
 
 // card array and random card generator
 
@@ -66,10 +86,30 @@ function newCard() {
  let card = cards[randNum];
 
  console.log(card.face);
-}
+};
 
 
 // initial deal write to DOM
+
+function dealCards() {
+console.log("deal");
+};
+
+function incrementStake() {
+  console.log("addone");
+};
+
+function reduceStake() {
+  console.log("subtractone");
+};
+
+function maxStake() {
+  console.log("all in");
+};
+
+function resetStake() {
+  console.log("clear stake"); 
+};
 
 // player turn, buttons, event listener, hand calculation, add card to DOM, messaging
 
@@ -77,4 +117,4 @@ function newCard() {
 
 // update bank
 
-// loop back to stake placing
+// loop back to newHand()
