@@ -19,6 +19,8 @@ function newGame() {
   // var bankValue = 100;
   let displayBank = document.getElementById("cashbox");
   displayBank.textContent = 100;
+  let displayStake = document.getElementById("stakebox");
+  displayStake.textContent = 0;
   newHand();
 }
 let startGame = document.getElementById("new-game");
@@ -45,18 +47,21 @@ function placeBet() {
  
 let buttons = document.getElementsByClassName("chipbtn");
 
+
   for (let button of buttons) {
     button.addEventListener("click", function() {
-      if (this.getAttribute("data-type") === "addchips") {
+      let oldBank = parseInt(document.getElementById("cashbox").innerText);
+      let oldStake = parseInt(document.getElementById("stakebox").innerText);
+      if (this.getAttribute("data-type") === "addchips" && oldBank >= 1) {
         incrementStake();
-    } else if (this.getAttribute("data-type") === "subtractchips") {
+    } else if (this.getAttribute("data-type") === "addchips" && oldBank < 1) { 
+      alert("Bankroll too low!")
+    } else if (this.getAttribute("data-type") === "subtractchips" && oldStake >= 1) {
         reduceStake();
-    } else if (this.getAttribute("data-type") === "all-in") {
-        maxStake();
-    } else if (this.getAttribute("data-type") === "reset") {
-        resetStake();
+    } else if (this.getAttribute("data-type") === "deal" && oldStake >= 1) {
+        newDeal();
     } else {
-        dealCards();
+      alert("Minimum Stake is 1")
     }
   })
   }
@@ -91,25 +96,29 @@ function newCard() {
 
 // initial deal write to DOM
 
-function dealCards() {
-console.log("deal");
+function newDeal() {
+
 };
 
 function incrementStake() {
-  console.log("addone");
+
+  let oldStake = parseInt(document.getElementById("stakebox").innerText);
+    document.getElementById("stakebox").innerText = ++oldStake;
+
+  let oldBank = parseInt(document.getElementById("cashbox").innerText)  
+  document.getElementById("cashbox").innerText = --oldBank;
 };
 
 function reduceStake() {
-  console.log("subtractone");
+
+  let oldStake = parseInt(document.getElementById("stakebox").innerText);
+    document.getElementById("stakebox").innerText = --oldStake;
+
+    let oldBank = parseInt(document.getElementById("cashbox").innerText)  
+    document.getElementById("cashbox").innerText = ++oldBank;
 };
 
-function maxStake() {
-  console.log("all in");
-};
 
-function resetStake() {
-  console.log("clear stake"); 
-};
 
 // player turn, buttons, event listener, hand calculation, add card to DOM, messaging
 
