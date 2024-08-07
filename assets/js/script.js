@@ -35,6 +35,7 @@ startGame.addEventListener('click', newGame);
 function newHand() {
   playerHand.length = 0;
   dealerHand.length = 0;
+  nextCard.length = 0;
 
 // clears cards from table. code adapted from https://javascript.plainenglish.io/how-to-remove-html-elements-by-class-name-b0288988dd55  
   const clear = document.querySelectorAll('.card')
@@ -108,6 +109,8 @@ function playerCard() {
     playerCard.classList.add("card");
     playerContainer.appendChild(playerCard).innerText = nextCard.face;
     playerHand.push(nextCard.value);
+    let sum = playerHand.reduce((accumulator, current) => accumulator + current);
+    document.getElementById("player-score").innerText = sum;
     console.log(playerHand);
     nextCard.length = 0;
 }
@@ -121,6 +124,8 @@ function dealerCard() {
     playerCard.classList.add("card");
     playerContainer.appendChild(playerCard).innerText = nextCard.face;
     dealerHand.push(nextCard.value);
+    let sum = dealerHand.reduce((accumulator, current) => accumulator + current);
+    document.getElementById("dealer-score").innerText = sum;
     console.log(dealerHand);
     nextCard.length = 0;
 }

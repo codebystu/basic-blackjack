@@ -84,6 +84,11 @@ header {
     position: relative
 }
 
+#dealer, #player {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .card-area {
     height: 10vh;
     text-align: center;
@@ -91,6 +96,10 @@ header {
 
 #dealer-cards {
     margin-bottom: 5vh;
+}
+
+#player-cards {
+    margin-bottom: 5px;
 }
 
 #message-box {
@@ -154,7 +163,7 @@ header {
     
 }
 
-#cashbox {
+#cashbox, .scorebox {
     height: 5vh;
     width: 10vh;
     background-color: white;
