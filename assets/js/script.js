@@ -209,7 +209,7 @@ function newCard() {
     {face: 'A', value: 11},
   ];
 
- let randNum = Math.floor(Math.random() * 12);
+ let randNum = Math.floor(Math.random() * 13);
 
   nextCard = cards[randNum];
 }
