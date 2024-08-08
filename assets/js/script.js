@@ -1,9 +1,11 @@
 // pause for page load
 
+
 // declare global variable hand arrays
 var playerHand = [];
 var dealerHand = [];
 var nextCard = [];
+var playerBlackjack = false;
 
 // How to play show and hide
 function openRules() {
@@ -26,6 +28,8 @@ function newGame() {
   let displayStake = document.getElementById("stakebox");
   displayStake.textContent = 0;
   document.getElementById("player-buttons").style.display = "none";
+  document.getElementById("player-score").innerText = 0;
+  document.getElementById("dealer-score").innerText = 0;
   newHand();
 }
 let startGame = document.getElementById("new-game");
@@ -48,62 +52,81 @@ for (const el of clear) {
   placeBet();
 };
 
+function placeBet() {
+  let dealbutton = document.getElementById("deal");
+  let addchip = document.getElementById("addchip");
+  let removechip = document.getElementById("removechip");
+
+  dealbutton.addEventListener("click", newDeal);
+  addchip.addEventListener("click", incrementStake);
+  removechip.addEventListener("click", reduceStake);
+}
+
+
 // staking buttons and event listener
 
-function placeBet() {
- 
-let buttons = document.getElementsByClassName("chipbtn");
+// function placeBet() {
+// let buttons = document.getElementsByClassName("chipbtn");
+//   for (let button of buttons) {
+//     button.addEventListener("click", function() {
+//       let oldBank = parseInt(document.getElementById("cashbox").innerText);
+//       let oldStake = parseInt(document.getElementById("stakebox").innerText);
+//       if (this.getAttribute("data-type") === "addchips" && oldBank >= 1) {
+//         incrementStake();
+//     } else if (this.getAttribute("data-type") === "addchips" && oldBank < 1) { 
+//       alert("Bankroll too low!");
+//     } else if (this.getAttribute("data-type") === "subtractchips" && oldStake >= 1) {
+//         reduceStake();
+//     } else if (this.getAttribute("data-type") === "deal" && oldStake >= 1) {
+//         newDeal();
+//     } else {
+//       alert("Minimum Stake is 1");
+//     }
+//   });
+// }
+// }
 
 
-  for (let button of buttons) {
-    button.addEventListener("click", function() {
-      let oldBank = parseInt(document.getElementById("cashbox").innerText);
-      let oldStake = parseInt(document.getElementById("stakebox").innerText);
-      if (this.getAttribute("data-type") === "addchips" && oldBank >= 1) {
-        incrementStake();
-    } else if (this.getAttribute("data-type") === "addchips" && oldBank < 1) { 
-      alert("Bankroll too low!")
-    } else if (this.getAttribute("data-type") === "subtractchips" && oldStake >= 1) {
-        reduceStake();
-    } else if (this.getAttribute("data-type") === "deal" && oldStake >= 1) {
-        newDeal();
-    } else {
-      alert("Minimum Stake is 1")
-    }
-  })
-  }
-};
 
 function incrementStake() {
 
   let oldStake = parseInt(document.getElementById("stakebox").innerText);
-    document.getElementById("stakebox").innerText = ++oldStake;
+  let oldBank = parseInt(document.getElementById("cashbox").innerText);  
 
-  let oldBank = parseInt(document.getElementById("cashbox").innerText)  
+  if( oldBank >= 1) { 
   document.getElementById("cashbox").innerText = --oldBank;
+  document.getElementById("stakebox").innerText = ++oldStake;
+  } else {
+    alert("Bankroll too low!");
+  }
 };
 
 function reduceStake() {
 
   let oldStake = parseInt(document.getElementById("stakebox").innerText);
-    document.getElementById("stakebox").innerText = --oldStake;
-
-    let oldBank = parseInt(document.getElementById("cashbox").innerText)  
+  let oldBank = parseInt(document.getElementById("cashbox").innerText)  
+  if ( oldStake > 1) {
     document.getElementById("cashbox").innerText = ++oldBank;
+    document.getElementById("stakebox").innerText = --oldStake;
+  } else {
+    alert("minimum stake is 1");
+  }
 };
 
 function newDeal() {
+  let oldStake = parseInt(document.getElementById("stakebox").innerText);
+  if (oldStake >= 1) {
   document.getElementById("message-box").textContent = "";
   document.getElementById("chip-buttons").style.display = "none";
   playerCard();
-  dealerCard();
   playerCard();
-  playerTurn();
+  } else {
+    alert("minimum stake is 1");
+  }
 };
 
 function playerCard() {
   newCard();
-
   let playerContainer = document.getElementById('player-cards');
     let playerCard = document.createElement('div');
     playerCard.classList.add("card");
@@ -111,8 +134,19 @@ function playerCard() {
     playerHand.push(nextCard.value);
     let sum = playerHand.reduce((accumulator, current) => accumulator + current);
     document.getElementById("player-score").innerText = sum;
-    console.log(playerHand);
-    nextCard.length = 0;
+
+  if (dealerHand.length < 1) {
+    dealerCard();
+  } else if ( sum === 21 && playerHand.length === 2 ) {
+    playerBlackjack = true;
+    dealerTurn();
+  } else if ( sum > 21 && playerHand.includes(11)) {
+    changeAce();
+  } else if ( sum > 21) {
+    playerBust();
+  } else {
+    playerTurn();
+  }
 }
 
 
@@ -126,18 +160,39 @@ function dealerCard() {
     dealerHand.push(nextCard.value);
     let sum = dealerHand.reduce((accumulator, current) => accumulator + current);
     document.getElementById("dealer-score").innerText = sum;
-    console.log(dealerHand);
-    nextCard.length = 0;
+   
 }
-
 function playerTurn() {
   document.getElementById("player-buttons").style.display = "block";
-  console.log("your move")
+let extracard = document.getElementById("hit");
+let endturn = document.getElementById("stand");
+
+extracard.addEventListener("click", playerCard);
+endturn.addEventListener("click", dealerTurn);
+}
+
+// function playerTurn() {
+//     document.getElementById("player-buttons").style.display = "block";
+//     let buttons = document.getElementsByClassName("playerbtn");
+//     for (let button of buttons) {
+//     button.addEventListener("click", function() {
+//       if (this.getAttribute("data-type") === "hit") {
+//         playerCard();
+//     } else if (this.getAttribute("data-type") === "stand") {
+//       dealerTurn();
+//     }
+//     })
+//   }
+// }
+
+function dealerTurn() {
+
 }
 
 // card array and random card generator
 
 function newCard() {
+  nextCard.length = 0;
   const cards = [
     {face: '2', value: 2},
 	  {face: '3', value: 3},
@@ -157,22 +212,4 @@ function newCard() {
  let randNum = Math.floor(Math.random() * 12);
 
   nextCard = cards[randNum];
-
 }
-
-
-// initial deal write to DOM
-
-
-
-
-
-
-
-// player turn, buttons, event listener, hand calculation, add card to DOM, messaging
-
-// dealer turn, hand calculation, add card to DOM, hand comparison, messaging
-
-// update bank
-
-// loop back to newHand()
