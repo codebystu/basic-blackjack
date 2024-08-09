@@ -63,31 +63,6 @@ function placeBet() {
 }
 
 
-// staking buttons and event listener
-
-// function placeBet() {
-// let buttons = document.getElementsByClassName("chipbtn");
-//   for (let button of buttons) {
-//     button.addEventListener("click", function() {
-//       let oldBank = parseInt(document.getElementById("cashbox").innerText);
-//       let oldStake = parseInt(document.getElementById("stakebox").innerText);
-//       if (this.getAttribute("data-type") === "addchips" && oldBank >= 1) {
-//         incrementStake();
-//     } else if (this.getAttribute("data-type") === "addchips" && oldBank < 1) { 
-//       alert("Bankroll too low!");
-//     } else if (this.getAttribute("data-type") === "subtractchips" && oldStake >= 1) {
-//         reduceStake();
-//     } else if (this.getAttribute("data-type") === "deal" && oldStake >= 1) {
-//         newDeal();
-//     } else {
-//       alert("Minimum Stake is 1");
-//     }
-//   });
-// }
-// }
-
-
-
 function incrementStake() {
 
   let oldStake = parseInt(document.getElementById("stakebox").innerText);
@@ -133,20 +108,42 @@ function playerCard() {
     playerContainer.appendChild(playerCard).innerText = nextCard.face;
     playerHand.push(nextCard.value);
     let sum = playerHand.reduce((accumulator, current) => accumulator + current);
+    if (playerHand.includes(11) && sum < 21) {
+      document.getElementById("player-score").innerText = `${sum - 10} / ${sum}`; 
+    } else {
     document.getElementById("player-score").innerText = sum;
-
+    }
   if (dealerHand.length < 1) {
     dealerCard();
   } else if ( sum === 21 && playerHand.length === 2 ) {
     playerBlackjack = true;
+    document.getElementById("message-box").textContent = "Blackjack!";
     dealerTurn();
   } else if ( sum > 21 && playerHand.includes(11)) {
+    console.log("has ace")
     changeAce();
   } else if ( sum > 21) {
     playerBust();
   } else {
     playerTurn();
   }
+}
+
+function changeAce(){
+  let index = playerHand.indexOf(11);
+
+  console.log(playerHand);
+  playerHand.splice(index, 1);
+  console.log(playerHand);
+  playerHand.push(1);
+  let sum = playerHand.reduce((accumulator, current) => accumulator + current);
+  document.getElementById("player-score").innerText = sum;
+  console.log(playerHand);
+}
+
+function playerBust() {
+  document.getElementById("message-box").textContent = "Bust! You Lose";
+  youLose();
 }
 
 
@@ -171,19 +168,7 @@ extracard.addEventListener("click", playerCard);
 endturn.addEventListener("click", dealerTurn);
 }
 
-// function playerTurn() {
-//     document.getElementById("player-buttons").style.display = "block";
-//     let buttons = document.getElementsByClassName("playerbtn");
-//     for (let button of buttons) {
-//     button.addEventListener("click", function() {
-//       if (this.getAttribute("data-type") === "hit") {
-//         playerCard();
-//     } else if (this.getAttribute("data-type") === "stand") {
-//       dealerTurn();
-//     }
-//     })
-//   }
-// }
+
 
 function dealerTurn() {
 
