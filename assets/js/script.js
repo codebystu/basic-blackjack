@@ -288,7 +288,7 @@ setTimeout(addtoBank, 1000);
 /** displays message for push (draw) and returns stake to bankroll and calls new hand*/
 function resultPush() {
   document.getElementById("message-box").innerText = "Push, stake returned";
-  let stake = document.getElementById("stakebox").innerText;
+  let stake = parseInt(document.getElementById("stakebox").innerText);
   let oldBank = parseInt(document.getElementById("cashbox").innerText);
   document.getElementById("cashbox").innerText = oldBank + stake;
   setTimeout(newHand, 2000);
