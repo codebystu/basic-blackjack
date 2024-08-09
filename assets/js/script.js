@@ -36,6 +36,8 @@ startGame.addEventListener('click', newGame);
 
 /** clears cards from table, resets hand arrays and displays buttons for placing stakes*/ 
 function newHand() {
+  playerBlackjack = false;
+  dealerBlackjack = false;
   playerHand.length = 0;
   dealerHand.length = 0;
   nextCard.length = 0;
@@ -134,17 +136,16 @@ function playerSecondcard() {
     playerContainer.appendChild(playerCard).innerText = nextCard.face;
     playerHand.push(nextCard.value);
     let sum = playerHand.reduce((accumulator, current) => accumulator + current);
-    if ( sum === 21 && playerHand.length === 2 ) {
-      playerBlackjack = true;
-      document.getElementById("message-box").textContent = "Blackjack!";
-      setTimeout(dealerTurn, 1000);
+    if ( sum === 22 ) {
+      changeAce();
     } else if (playerHand.includes(11) && sum < 21) {
       document.getElementById("player-score").innerText = `${sum - 10} / ${sum}`; 
     } else {
-    document.getElementById("player-score").innerText = sum;
-    setTimeout(playerTurn, 500);
+      document.getElementById("player-score").innerText = sum;
+      playerTurn();
+    }    
     }
-    }
+    
 
 /** Handles player Ace value of 1/11 */
 function changeAce(){
@@ -153,6 +154,7 @@ function changeAce(){
   playerHand.push(1);
   let sum = playerHand.reduce((accumulator, current) => accumulator + current);
   document.getElementById("player-score").innerText = sum;
+  playerTurn();
 }
 
 /** displays message when player bust */
@@ -185,21 +187,18 @@ function dealerCard() {
     } else {
     document.getElementById("dealer-score").innerText = sum;
     }
-    if (playerHand.length = 1) {
+    if (playerHand.length === 1) {
       setTimeout(playerSecondcard, 500);
-    } else if ( sum > 21 && dealerHand.includes(11)) {
-      dealerAce();
-    } else if ( sum > 21) {
-      dealerBust();
-    } else if (sum > 16 && sum < 22) {
-      setTimeout(compareHands, 1000);
     } else {
+      console.log(dealerHand);
       dealerTurn();
     }
 }
 
 /** Adds the second card to dealer hand */
 function dealerSecondcard() {
+  newCard();
+
   let playerContainer = document.getElementById('dealer-cards');
   let playerCard = document.createElement('div');
   playerCard.classList.add("card");
@@ -207,12 +206,16 @@ function dealerSecondcard() {
   dealerHand.push(nextCard.value);
   let sum = dealerHand.reduce((accumulator, current) => accumulator + current);
   document.getElementById("dealer-score").innerText = sum;
-  if ( sum === 21 && dealerHand.length === 2 ) {
-    dealerBlackjack = true;
-    setTimeout(compareHands, 1000);
-  } else {
+  if (sum === 22) {
+    dealerAce();
+  } else if (sum < 16) {
+    console.log("dealerturn");
     setTimeout(dealerTurn, 500);
+  } else if (sum >= 17) {
+
   }
+  dealerBlackjack = true;
+  setTimeout(compareHands, 1000);
 }
 
 /** Handles dealer Ace value of 1/11 */
@@ -222,6 +225,7 @@ function dealerAce(){
   dealerHand.push(1);
   let sum = dealerHand.reduce((accumulator, current) => accumulator + current);
   document.getElementById("dealer-score").innerText = sum;
+  dealerTurn();
 }
 
 /** displays message when dealer bust */
@@ -235,11 +239,11 @@ console.log("compare");
 }
 
 function youWin() {
-console.log("you win")
+console.log("you win");
 }
 
 function push() {
-console.log("push")
+console.log("push");
 }
 
 function addtoBank() {
@@ -248,6 +252,14 @@ function addtoBank() {
 
 /** handles player choice on extra card or stand */
 function playerTurn() {
+  let score = document.getElementById("player-score");
+  let numcards = playerHand.length;
+  if (score === 21 && numcards === 2) {
+    playerBlackjack = true;
+    document.getElementById("message-box").innerText = "Blackjack!";
+    setTimeout(dealerHand, 1000);
+  } else {
+    playerBlackjack = false;
   document.getElementById("player-buttons").style.display = "block";
 let extracard = document.getElementById("hit");
 let endturn = document.getElementById("stand");
@@ -255,15 +267,26 @@ let endturn = document.getElementById("stand");
 extracard.addEventListener("click", playerCard);
 endturn.addEventListener("click", dealerTurn);
 }
-
+}
 /** Handles player blackjack comparison and calls more dealer cards */
 function dealerTurn() {
   document.getElementById("player-buttons").style.display = "none";
-  if (dealerHand.length = 1) {
+  let score = document.getElementById("dealer-score").innerText
+  if (dealerHand.length === 1) {
     setTimeout(dealerSecondcard, 500);
-  } else if (playerBlackjack = true && dealerHand.length === 2) {
+  } else if (playerBlackjack === true && dealerHand.length === 2) {
+    console.log("pbj");
     setTimeout(compareHands, 1000);
-  } else {
+  } else if (dealerBlackjack === true) {
+    console.log("dbj");
+    setTimeout(compareHands, 1000);
+  } else if ( score > 21 && dealerHand.includes(11)) {
+    dealerAce();
+  } else if ( score > 21) {
+    dealerBust();
+  } else if (score > 16 && score < 22) {
+    setTimeout(compareHands, 1000);
+  } else {  
     setTimeout(dealerCard, 500);
   }
 }
