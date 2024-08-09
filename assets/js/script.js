@@ -3,6 +3,7 @@ var playerHand = [];
 var dealerHand = [];
 var nextCard = [];
 var playerBlackjack = false;
+var dealerBlackjack = false;
 
 /** open and close game rules */ 
 
@@ -38,7 +39,7 @@ function newHand() {
   playerHand.length = 0;
   dealerHand.length = 0;
   nextCard.length = 0;
-  
+  document.getElementById("stakebox").innerText = 0;
 // clears cards from table. code adapted from https://javascript.plainenglish.io/how-to-remove-html-elements-by-class-name-b0288988dd55  
   const clear = document.querySelectorAll('.card')
 for (const el of clear) {
@@ -124,6 +125,7 @@ function playerCard() {
   }
 }
 
+/** Adds the second card to player hand */
 function playerSecondcard() {
   newCard();
   let playerContainer = document.getElementById('player-cards');
@@ -144,7 +146,7 @@ function playerSecondcard() {
     }
     }
 
-/** Handles Ace value of 1/11 */
+/** Handles player Ace value of 1/11 */
 function changeAce(){
   let index = playerHand.indexOf(11);
   playerHand.splice(index, 1);
@@ -156,17 +158,18 @@ function changeAce(){
 /** displays message when player bust */
 function playerBust() {
   document.getElementById("player-buttons").style.display = "none";
-  document.getElementById("message-box").textContent = "Bust! You Lose";
-  youLose();
+  document.getElementById("message-box").textContent = "Bust!";
+  setTimeout(youLose, 2000);
 }
 
 /** resets stake value after losing hand and calls newHand function */
 function youLose() {
-  document.getElementById("stakebox").innerText = 0;
-  newHand();
+  let loss = document.getElementById("stakebox").innerText;
+  document.getElementById("message-box").innerText = `You lost ${loss}`;
+  setTimeout(newHand, 2000);
 }
 
-/** Adds card to dealer hand */
+/** Adds card to dealer hand and handles result */
 function dealerCard() {
   newCard();
 
@@ -177,11 +180,70 @@ function dealerCard() {
     dealerHand.push(nextCard.value);
     let sum = dealerHand.reduce((accumulator, current) => accumulator + current);
     document.getElementById("dealer-score").innerText = sum;
-    if (playerHand.length = 2) {
-      setTimeout(playerSecondcard, 500);
+    if (dealerHand.includes(11) && sum < 21) {
+      document.getElementById("dealer-score").innerText = `${sum - 10} / ${sum}`; 
     } else {
-      setTimeout(dealerTurn, 500);
+    document.getElementById("dealer-score").innerText = sum;
     }
+    if (playerHand.length = 1) {
+      setTimeout(playerSecondcard, 500);
+    } else if ( sum > 21 && dealerHand.includes(11)) {
+      dealerAce();
+    } else if ( sum > 21) {
+      dealerBust();
+    } else if (sum > 16 && sum < 22) {
+      setTimeout(compareHands, 1000);
+    } else {
+      dealerTurn();
+    }
+}
+
+/** Adds the second card to dealer hand */
+function dealerSecondcard() {
+  let playerContainer = document.getElementById('dealer-cards');
+  let playerCard = document.createElement('div');
+  playerCard.classList.add("card");
+  playerContainer.appendChild(playerCard).innerText = nextCard.face;
+  dealerHand.push(nextCard.value);
+  let sum = dealerHand.reduce((accumulator, current) => accumulator + current);
+  document.getElementById("dealer-score").innerText = sum;
+  if ( sum === 21 && dealerHand.length === 2 ) {
+    dealerBlackjack = true;
+    setTimeout(compareHands, 1000);
+  } else {
+    setTimeout(dealerTurn, 500);
+  }
+}
+
+/** Handles dealer Ace value of 1/11 */
+function dealerAce(){
+  let index = dealerHand.indexOf(11);
+  dealerHand.splice(index, 1);
+  dealerHand.push(1);
+  let sum = dealerHand.reduce((accumulator, current) => accumulator + current);
+  document.getElementById("dealer-score").innerText = sum;
+}
+
+/** displays message when dealer bust */
+function dealerBust() {
+  document.getElementById("message-box").textContent = "Dealer Bust!";
+  setTimeout(youWin, 2000);
+}
+
+function compareHands() {
+console.log("compare");
+}
+
+function youWin() {
+console.log("you win")
+}
+
+function push() {
+console.log("push")
+}
+
+function addtoBank() {
+
 }
 
 /** handles player choice on extra card or stand */
@@ -194,13 +256,20 @@ extracard.addEventListener("click", playerCard);
 endturn.addEventListener("click", dealerTurn);
 }
 
-
+/** Handles player blackjack comparison and calls more dealer cards */
 function dealerTurn() {
-
+  document.getElementById("player-buttons").style.display = "none";
+  if (dealerHand.length = 1) {
+    setTimeout(dealerSecondcard, 500);
+  } else if (playerBlackjack = true && dealerHand.length === 2) {
+    setTimeout(compareHands, 1000);
+  } else {
+    setTimeout(dealerCard, 500);
+  }
 }
 
-// card array and random card generator
 
+/** creates new card by using random number to index the array */
 function newCard() {
   nextCard.length = 0;
   const cards = [
