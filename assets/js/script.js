@@ -81,7 +81,7 @@ function incrementStake() {
 function reduceStake() {
 
   let oldStake = parseInt(document.getElementById("stakebox").innerText);
-  let oldBank = parseInt(document.getElementById("cashbox").innerText)  
+  let oldBank = parseInt(document.getElementById("cashbox").innerText);  
   if ( oldStake > 1) {
     document.getElementById("cashbox").innerText = ++oldBank;
     document.getElementById("stakebox").innerText = --oldStake;
@@ -176,7 +176,12 @@ function playerBust() {
 function youLose() {
   let loss = document.getElementById("stakebox").innerText;
   document.getElementById("message-box").innerText = `You lost ${loss}`;
+  let bank = document.getElementById("cashbox").innerText;
+  if (bank >= 1){
   setTimeout(newHand, 2000);
+  } else {
+    alert("You lost all your chips");
+  }
 }
 
 /** Adds card to dealer hand and handles result */
@@ -248,20 +253,59 @@ function dealerBust() {
   setTimeout(youWin, 2000);
 }
 
+/** compares final hands and calls corresponding function */
 function compareHands() {
-console.log("compare");
+  let player = document.getElementById("player-score").innerText;
+  let dealer = document.getElementById("dealer-score").innerText;
+  if (playerBlackjack === true && dealerBlackjack === false) {
+    youWin();
+  } else if (playerBlackjack === false && dealerBlackjack === true) {
+    youLose();
+  } else if (playerBlackjack === true && dealerBlackjack === true) {
+    resultPush();
+  } else if (player > dealer) {
+    youWin();
+  } else if (player < dealer) {
+    youLose();
+  } else {
+    resultPush();
+  }
 }
 
+/** displays win message */
 function youWin() {
-console.log("you win");
+  let playerReturn = 0;
+  let stake = document.getElementById("stakebox").innerText;
+  if (playerBlackjack === true) {
+    playerReturn = stake * 3;
+  } else {
+    playerReturn = stake *2;
+  }
+  document.getElementById("message-box").innerText = `You Win ${playerReturn}`;
+setTimeout(addtoBank, 1000);
 }
 
-function push() {
-console.log("push");
+/** displays message for push (draw) and returns stake to bankroll and calls new hand*/
+function resultPush() {
+  document.getElementById("message-box").innerText = "Push, stake returned";
+  let stake = document.getElementById("stakebox").innerText;
+  let oldBank = parseInt(document.getElementById("cashbox").innerText);
+  document.getElementById("cashbox").innerText = oldBank + stake;
+  setTimeout(newHand, 2000);
 }
 
+/** adds winnings to bankroll and calls new hand */
 function addtoBank() {
-
+  let playerReturn = 0;
+  let stake = document.getElementById("stakebox").innerText;
+  if (playerBlackjack === true) {
+    playerReturn = stake * 3;
+  } else {
+    playerReturn = stake *2;
+  }
+  let oldBank = parseInt(document.getElementById("cashbox").innerText);
+  document.getElementById("cashbox").innerText = oldBank + playerReturn;
+  setTimeout(newHand, 2000);
 }
 
 /** handles player choice on extra card or stand */
@@ -278,6 +322,8 @@ endturn.addEventListener("click", dealerTurn);
 /** Handles player blackjack comparison and calls more dealer cards */
 function dealerTurn() {
   document.getElementById("player-buttons").style.display = "none";
+  let sum = playerHand.reduce((accumulator, current) => accumulator + current);
+  document.getElementById("player-score").innerText = sum;
   if (dealerHand.length === 1) {
     setTimeout(dealerSecondcard, 500);
   } else if (playerBlackjack === true && dealerHand.length === 2) {
