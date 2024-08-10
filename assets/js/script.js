@@ -195,7 +195,7 @@ function dealerCard() {
     dealerHand.push(nextCard.value);
     let sum = dealerHand.reduce((accumulator, current) => accumulator + current);
     document.getElementById("dealer-score").innerText = sum;
-    if (dealerHand.includes(11) && sum < 17) {
+    if (dealerHand.includes(11) && sum <= 16) {
       document.getElementById("dealer-score").innerText = `${sum - 10} / ${sum}`; 
     } else {
     document.getElementById("dealer-score").innerText = sum;

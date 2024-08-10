@@ -204,5 +204,15 @@ footer {
 #logo {
     font-size: 100%;
 }
-    
+
+#rules {
+    font-size: 80%;
+}
+
+.card {
+    height: 6vh;
+    width: 5vh;
+    font-size: 6vh;
+    line-height: 6vh;
+}
 }
