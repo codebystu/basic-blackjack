@@ -29,7 +29,7 @@ header {
 }  
 
 #logo {
-    font-family: inherit
+    font-family: inherit;
     font-weight: 500;
     font-size: 200%;
     text-transform: uppercase;
@@ -157,10 +157,6 @@ header {
     position: absolute;
     bottom: 5%;
     left: 47%;
-}
-
-#bankroll {
-    
 }
 
 #cashbox, .scorebox {
