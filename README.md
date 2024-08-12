@@ -1,6 +1,6 @@
 # Basic Blackjack
 This is an interactive front end website using HTML CSS and Javascript, it is a basic blackjack game simulator where a single player takes on a computer controlled dealer and tries to increase their bankroll by betting on the outcome of the hand and deciding whether to stand on their current hand or hit and take an additional card in an attempt to be closer to a score of 21, without going over.
-The live site can be found [here](http://codebystu.github.io/msp1-tshg-final)
+The live site can be found [here](https://codebystu.github.io/basic-blackjack/)
 
 ![Responsive Mockup](documents/responsive.png)
 ## UX

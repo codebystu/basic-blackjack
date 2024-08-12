@@ -5,15 +5,12 @@ var nextCard = [];
 var playerBlackjack = false;
 var dealerBlackjack = false;
 
-/** open and close game rules */ 
-
+/** open and close game rules */
 function openRules() {
     document.getElementById("rules").style.display = "block";
   }
   let open = document.getElementById("open-rules");
     open.addEventListener('click', openRules);
-  
-  
   function closeRules() {
     document.getElementById("rules").style.display = "none";
   }
@@ -34,7 +31,7 @@ function newGame() {
 let startGame = document.getElementById("new-game");
 startGame.addEventListener('click', newGame);
 
-/** clears cards from table, resets hand arrays and displays buttons for placing stakes*/ 
+/** clears cards from table, resets hand arrays and displays buttons for placing stakes*/
 function newHand() {
   playerBlackjack = false;
   dealerBlackjack = false;
@@ -43,8 +40,8 @@ function newHand() {
   nextCard.length = 0;
   document.getElementById("stakebox").innerText = 0;
 // clears cards from table. code adapted from https://javascript.plainenglish.io/how-to-remove-html-elements-by-class-name-b0288988dd55  
-  const clear = document.querySelectorAll('.card')
-for (const el of clear) {
+  let clear = document.querySelectorAll('.card');
+  for (let el of clear) {
   el.parentNode.removeChild(el);
 }
   document.getElementById("message-box").textContent = "Place your bet";
@@ -151,10 +148,8 @@ function playerSecondcard() {
       document.getElementById("message-box").innerText = "Blackjack!";
       playerBlackjack = true;
       setTimeout(dealerTurn, 2000);
-    }   
     }
-    
-
+    }
 /** Handles player Ace value of 1/11 */
 function changeAce(){
   let index = playerHand.indexOf(11);
@@ -207,7 +202,7 @@ function dealerCard() {
     }else if (sum > 21) {
       dealerBust();
     } else if (sum >= 17 && sum <= 21) {
-      setTimeout(compareHands, 500)
+      setTimeout(compareHands, 500);
     } else {
       dealerTurn();
     }
@@ -216,7 +211,6 @@ function dealerCard() {
 /** Adds the second card to dealer hand */
 function dealerSecondcard() {
   newCard();
-
   let playerContainer = document.getElementById('dealer-cards');
   let playerCard = document.createElement('div');
   playerCard.classList.add("card");
@@ -272,7 +266,7 @@ function compareHands() {
   }
 }
 
-/** displays win message */
+/** displays win message and adds winnings to bankroll */
 function youWin() {
   let playerReturn = 0;
   let stake = document.getElementById("stakebox").innerText;
@@ -310,7 +304,6 @@ function addtoBank() {
 
 /** handles player choice on extra card or stand */
 function playerTurn() {
- 
   document.getElementById("player-buttons").style.display = "block";
 let extracard = document.getElementById("hit");
 let endturn = document.getElementById("stand");
