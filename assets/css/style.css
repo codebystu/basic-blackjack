@@ -212,3 +212,9 @@ footer {
     line-height: 6vh;
 }
 }
+
+#error-mesage {
+    position: absolute;
+    top: 50vh;
+    text-align: center;
+}
