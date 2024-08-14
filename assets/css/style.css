@@ -20,6 +20,10 @@ button {
     padding: 5px;
 }
 
+.btn:hover {
+    background-color: #0058CC;
+}
+
 
 /*---------------------------------------Header and Logo */
 
@@ -196,6 +200,16 @@ footer {
     text-decoration: none;
 }
 
+/*--------------------------------------- 404 page */
+
+#error-message {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+
+/*--------------------------------------- responsive for smaller screens */
+
 @media screen and (max-width: 450px) {
 #logo {
     font-size: 100%;
@@ -219,8 +233,3 @@ footer {
     position: relative;
 }
 
-#error-message {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-}
