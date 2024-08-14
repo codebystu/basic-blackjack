@@ -6,12 +6,12 @@ The live site can be found [here](https://codebystu.github.io/basic-blackjack/)
 ## UX
 
 ### Colour Scheme
-The starting point for colour scheme choice was the green beize type color, reminiscent of a card table in a casino [Coolor Contrast Checker](https://coolors.co/contrast-checker/2d4219-faebd7). 
+The starting point for the colour scheme choice was the green beize type color, reminiscent of a card table in a casino, i selected this from the colour picker on [color space](https://mycolor.space/) and fed that colour through the pallette generator on the same site, then chose the switch pallette from the suggestions.(documents/colourpallette.png)
 
 ### Typography
 
-I used [Fontpair](https://www.fontpair.co/all) to select
-![Font Selection](documents/fontselect.png)
+I used [Google Fonts](https://fonts.google.com/) to select "Oswald" as the main font, this was an homage to my grandfather who taught me to play blackjack when I was a kid. For the card faces I wanted something similar but chunkier in appearance and settled on Bebas Neue.
+
 
 ### User Stories
 -   _Users visiting the site may have a number of different missions._
