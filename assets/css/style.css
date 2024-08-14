@@ -24,6 +24,16 @@ button {
     background-color: #0058CC;
 }
 
+#open-rules:hover {
+    background-color: white;
+    color: black;
+}
+
+#close-rules:hover {
+    background-color: white;
+    color: black;
+}
+
 
 /*---------------------------------------Header and Logo */
 
@@ -48,6 +58,8 @@ header {
     margin-right: 20px;
     margin-top: 5px;
     text-transform: uppercase;
+    background-color: #0058CC;
+    color: white;
 }
 
 #logo, #open-rules {
@@ -72,6 +84,11 @@ header {
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+#close-rules {
+    background-color: #0058CC;
+    color: white;
 }
 
 /*--------------------------------------- game area */
