@@ -62,7 +62,7 @@ My initial mapping of the required javascript functionality
 
 - Gameplay
 
-
+https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
 
 - After hand information
 
