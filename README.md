@@ -34,7 +34,6 @@ I used [Google Fonts](https://fonts.google.com/) to select "Oswald" as the main 
 ### Original wireframe design
 The simple gameplay area is small enough that it will not require any change for smaller screens such as tablets or mobile.
 ![visual wireframe](documents/bbjscreenwire.png)
-My initial mapping of the required javascript functionality
 ![javascript functions wireframe](documents/jsmodelwire.png)
 
 ## Features
