@@ -61,7 +61,7 @@ The simple gameplay area is small enough that it will not require any change for
 
 - Gameplay
 
-
+https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
 
 - After hand information
 
