@@ -64,7 +64,7 @@ The simple gameplay area is small enough that it will not require any change for
 
 ![initial deal](documents/initialdeal.png)
 -   Handling Aces
-    - The Ace card has an interchangable value of 1 or 11, unless a value of 11 will result in a hand value over 21, in which case it only has a value of 1. When a player has an ace and the value is interchangable they are shown both potential scores i.e. 7 / 17. This reverts to a single score when hand a value of 11 would result in bust.  For the dealer an ace will only show an interchangable value between 1 and 16 as any score between 17 and 21 automatically ends the dealer turn.
+    - The Ace card has an interchangable value of 1 or 11, unless a value of 11 will result in a hand value over 21, in which case it only has a value of 1. When a player has an ace and the value is interchangable they are shown both potential scores i.e. 7 / 17. This reverts to a single score when a value of 11 would result in the hand going bust.  For the dealer an ace will only show an interchangable value between 1 and 16 as any score between 17 and 21 automatically ends the dealer turn.
 ![player ace](documents/playerace.png)
 ![Ace Value 1](documents/acerevalue.png)
 ![Dealer Ace](documents/dealerace.png)
