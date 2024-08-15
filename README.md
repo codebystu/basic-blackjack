@@ -32,43 +32,54 @@ I used [Google Fonts](https://fonts.google.com/) to select "Oswald" as the main 
     
 
 ### Original wireframe design
-The simple gameplay area is small enough that it will not require any change for smaller screens such as tablets or mobile.
+The simple gameplay area is small enough that it will not require any change for smaller screens apart from text size.
 ![visual wireframe](documents/bbjscreenwire.png)
 ![javascript functions wireframe](documents/jsmodelwire.png)
 
 ## Features
 ### Existing Features
 - Header
-    - The header bar features the logo on the left hand side and the How To Play button on the right. When the logo is clicked this reloads the page. when the user hovers over the how to play button, the background turns white amd the text turns black to alert the user that it is a clickable button. On clicking the button, the rules of the game are displayed to inform the user how to play. ![how to play](documents/headerbar.png)
+    - The header bar features the logo on the left hand side and the How To Play button on the right. When the logo is clicked this reloads the page. when the user hovers over the how to play button, the background turns white amd the text turns black to alert the user that it is a clickable button. On clicking the button, the rules of the game are displayed to inform the user how to play. 
+![how to play](documents/headerbar.png)
 - Rules overlay
     - The rules overlay is displayed at the discretion of the user, it can be accessed at any time and does not effect gameplay.  It describes the objective of the game and what the user must do to play through the different phases of the game.
     At the end of the text is the close button. When the user hovers over it the button reacts in the same way as the How To Play button in the header for consistency and usability. When clicked, it closes the rules overlay so the user can continue on their gameplay.
-    ![rules overlay](documents/rules.png)
+![rules overlay](documents/rules.png)
 - Gameboard
-
-    ![gameboard](documents/gameboard.png)
+    - The gameboard is the main part of index.html and is visible upon loading the webpage. It shows the features which are always visible, Dealer Score, Player Score, Current Stake amount (this isn't labelled and simply shows 0), Bankroll and the New Game button.
+    It also shows 2 cards below the dealer score and 2 above the player score, both hands of cards show a 10 and an Ace which represents a score of Blackjack (21 in 2 cards). Showing this layout upon load makes the page quite intuitive.  Anyone who has played blackjack will online or at a live table will recognise this layout and understand what the sections represent.  The only clickable button in the game area at this phase is the New Game button at the bottom. When the user hovers over it turns blue to highlight that it is clickable.  Upon clicking the user is taken to the staking phase of the game.
+![gameboard](documents/gameboard.png)
 - Staking game phase
+    - After pressing the new game button the cards from the previous hand are cleared from the table, a message is displayed beneath PLayer Score, prompting the user to "Place your bet" the 3 stake selection buttons appear beneath the stake-box and the bankroll is credited with an initial amount of 20. THe buttons all highlight in blue when the user hovers over them, + and - will increment the stake up and down by 1 at a time on each click and have the inverse effect on bankroll i.e stake increases by 1 and bankroll decreases by 1.  If the user has selected a stake and clicks on the Deal button they will be taken to the initial deal phase of the game.
 
-    ![staking](documents/placebet.png)
-    ![increment stake](documents/incrementstake.png)
+![staking](documents/placebet.png)
+![increment stake](documents/incrementstake.png)
 - Player warning alerts
+    - THere are two alerts in the staking phase which are triggered if the user tries to do something which prevents them from moving through the game.  If the user tries to reduce stake below 1 or clicks deasl without selecting a stake, the minimum stake alert is shown.  If the user tries to increase their stake to a higher amount than their bankroll, the bankroll too low alert is triggered.
 
 ![minimum stake alert](documents/minimumstake.png)
 ![bankroll low alert](documents/bankrolltoolow.png)
 - Initial deal screen
+    - Once Deal has been correctly the staking buttons disappear, two cards are dealt to the player and one to the dealer.  The dealer and player score values are calculated and displayed iun the corresponding areas on the screen, and the player buttons Hit and Stand are displayed where the staking buttons used to be.  The buttons highlight blue when hovered, in keeping with all the gameplay buttons. clicking Hit will add another card to the player hand, the player can hit as many times as they like until they go over a score of 21, which will automatically end the hand and they will lose their stake.
 
 ![initial deal](documents/initialdeal.png)
+-   Handling Aces
+    - The Ace card has an interchangable value of 1 or 11, unless a value of 11 will result in a hand value over 21, in which case it only has a value of 1. When a player has an ace and the value is interchangable they are shown both potential scores i.e. 7 / 17. This reverts to a single score when hand a value of 11 would result in bust.  For the dealer an ace will only show an interchangable value between 1 and 16 as any score between 17 and 21 automatically ends the dealer turn.
+![player ace](documents/playerace.png)
+![Ace Value 1](documents/acerevalue.png)
+![Dealer Ace](documents/dealerace.png)
 
-- Gameplay
+- Automated Gameplay
+    - In this video you can see a single hand being played. Note how the cards are dealt one at a time to add that sense of anticipation to the game, and the messaging that appears temporarily below Player Score to inform the player of the outcome of the hand.  There are a number of messages which display in this area depending on how the cards play out.  They are "Blackjack" when player gets blackjack, "Dealer blackjack" when dealer gets blackjack. "Bust" and "Dealer Bust" when either player or dealer goes over 21. When the end result is calcualted the message box will display either "you win" with amount won "you lost" with amount lost or "Push, stake rerturned" in the event of a draw. if the user won or if it was a draw the bankroll is increased accordingly after this message.  After a short delay the game cycles back to the new hand phase, the cards are cleared from the table, the "place your bet" prompt displays and the staking buttons reappear
 
 https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
 
 - After hand information
-
+    - When the game cycles round and automatically starts the next hand the Dealer and Player scores from the previous hand are retained until the player has set stake and clicked Deal.  The reason for this is that in the busy world we live in people often play minigames like this whilst doing something else.  The end game messaging is only displayed for a couple of seconds and would be quite easy to miss if you are distracted for a brief moment. In the below example the player would know that they lost the previous hand.
 ![post play](documents/postplay.png)
-
-
-
+- End game
+    -   When the player loses all of their bankroll the game ends at the end of that hand and the "You lost all your chips" alert is displayed. On clearing the alert, the only button available to the user is "New Game"
+![You lost](documents/youlost.png) 
 - Custom 404 page
     - This feature gives an error message on a page styled in the theme of the rest of the site, with a link to get the user back to the main landing page. Useful to users who follow a broken link or if they encounter some other error, they can get back to the main site easily.
 ![404 page](documents/404page.png)
@@ -79,13 +90,12 @@ https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
 - [Balsamiq](https://balsamiq.com/) used for wireframe
 - [Git](https://git-scm.com/) for version control
 - [Github](https://github.com/) for repository and page deployment
-- [Gitpod](https://www.gitpod.io/) the IDE I was originally using but was found to be unreliable
-- [VScode](https://code.visualstudio.com/) my IDE of choice now
+- [VScode](https://code.visualstudio.com/) my IDE of choice
 - HTML language used to place the content
 - CSS  language used to style the content
+- Javascript language used to enable interactivity and logical operators.
 - Markdown  language used to create the README.md and TESTING.md files
-- [Bootstrap](https://getbootstrap.com/) used to fix the header to the top of the page
-- [Fontawesome](https://fontawesome.com/) for the social media icons
+- [Favicon.io](https://favicon.io/favicon-generator/) to create the J favicon
 - [Google Fonts](https://fonts.google.com/) for font pairings and importing to project
 - [Google Devtools](https://developer.chrome.com/docs/devtools) for testing and development
 ## Testing
@@ -97,21 +107,19 @@ https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
 - The site was deployed to GitHub pages. The steps to deploy this static html site were: 
   - In the GitHub repository, navigate to the Settings tab 
   - From the code and automation menu on the left hand column select Pages
-  - From the source drop down menu select GitHub Actions
-  - Click the "browse all workflows" link
-  - Scroll down to the Pages heading and click on the Configure button in the Static HTML box
-  - Click the green coloured Commit changes button in the top right corner of the window
-  - A pop up will appear with a pre filled commit message of "Create static.yml" an additional text box is available to add an optional extended description. Select "Commit directly to the main branch" from the radio buttons (this is default option) and click the green "Commit changes" button.
-  - You are redirected to the workflow page of the repository which shows the last commit with the .yml file added.
-  - Navigate back to the repository and you will see a deployment section in the right hand menu below Packages.
-  - This will have a status of queued if deployment is still in progress. Once the site is deployed there will be a green tick and a link to the repository deployments section. The link in the top box will show the url for your deployed site. Below is a list of all deployments.
+  - From the source drop down menu select "Deploy from a branch"
+  - under the branch heading the first drop down menu select "main"
+  - the second drop down menu lets you choose the folder, in this instance select /(root) and then hit Save
+  - wait for a moment and a message will be displayed at the top of the page stating "GitHub Pages source saved
+  - Reload the page and you will see a message at the top which includes the link to your live site, in this instance it is https://github.com/codebystu/basic-blackjack 
  
 ## Credits
 ### Media
 
 ### Content
 
-### Code (All highlighted within HTML and CSS code, using notes above the relevant sections)
+### Code
+
 
 #### Acknowledgements
 - All in the UCP-15 tutor group for making it an enjoyable experience so far and being a soundboard
