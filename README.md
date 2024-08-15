@@ -64,7 +64,7 @@ The simple gameplay area is small enough that it will not require any change for
 
 ![initial deal](documents/initialdeal.png)
 -   Handling Aces
-    - The Ace card has an interchangable value of 1 or 11, unless a value of 11 will result in a hand value over 21, in which case it only has a value of 1. When a player has an ace and the value is interchangable they are shown both potential scores i.e. 7 / 17. This reverts to a single score when a value of 11 would result in the hand going bust.  For the dealer an ace will only show an interchangable value between 1 and 16 as any score between 17 and 21 automatically ends the dealer turn.
+    - The Ace card has an interchangable value of 1 or 11, unless a value of 11 will result in a hand value over 21, in which case it only has a value of 1. When a player has an ace and the value is interchangable they are shown both potential scores i.e. 7 / 17. This reverts to a single score when a value of 11 would result in the hand going bust.  For the dealer an ace will only show an interchangable value between 1 and 16 as any score between 17 and 21 automatically ends the dealer turn and the result is calculated.
 ![player ace](documents/playerace.png)
 ![Ace Value 1](documents/acerevalue.png)
 ![Dealer Ace](documents/dealerace.png)
@@ -84,7 +84,11 @@ https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
     - This feature gives an error message on a page styled in the theme of the rest of the site, with a link to get the user back to the main landing page. Useful to users who follow a broken link or if they encounter some other error, they can get back to the main site easily.
 ![404 page](documents/404page.png)
 ### Features Left To Implement
--   _Future features_
+-   Future features
+    - Users may like the ability to increment their stake by more than 1 at a time, chip buttons with values of 1,2 5, and 10 are common in similar games.
+    - users may wish to bet all of their bankroll at a single click, an "All In"
+     button could be created for this.
+     - Card suits and colours could be added, allowing for side bets also, but then it would no longer be 'Basic' blackjack.
  
 ## Tools and Technologies Used
 - [Balsamiq](https://balsamiq.com/) used for wireframe
@@ -98,6 +102,10 @@ https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
 - [Favicon.io](https://favicon.io/favicon-generator/) to create the J favicon
 - [Google Fonts](https://fonts.google.com/) for font pairings and importing to project
 - [Google Devtools](https://developer.chrome.com/docs/devtools) for testing and development
+- [W3C](https://validator.w3.org/) for html validation
+- [W3C Jigsaw](https://jigsaw.w3.org/css-validator/) for CSS validation
+- [JSLint](https://www.jslint.com/) for javascript validation
+- [Esprima](https://esprima.org/demo/validate.html) for javascript validation
 ## Testing
  Testing documentation can be found on the following link
 ![Testing](TESTING.md)
@@ -114,11 +122,18 @@ https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
   - Reload the page and you will see a message at the top which includes the link to your live site, in this instance it is https://github.com/codebystu/basic-blackjack 
  
 ## Credits
-### Media
-
-### Content
+### Font
+-   Beba Neue Font
+    - used for the card face and the favicon
+    - Font Author: Copyright 2019 The Bebas Neue Project Authors (https://github.com/dharmatype/Bebas-Neue)
+- Font Source: https://fonts.gstatic.com/s/bebasneue/v14/JTUSjIg69CK48gW7PXooxW5rygbi49c.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL)
 
 ### Code
+- [geeks for geeks](https://www.geeksforgeeks.org/how-to-delay-a-javascript-function-call-using-javascript/)article used to create illusion of card dealing animation, add anticipation and allow time to read in game messaging.
+- [Stack Overflow](https://stackoverflow.com/questions/67691159/addeventlistenerclick-function-once-true-firing-multiple-times-in-the)this thread helped me solve the bug with stake doubling and cards being dealt multiple times which I initially thought was bubbling.
+- [Medium](https://javascript.plainenglish.io/how-to-remove-html-elements-by-class-name-b0288988dd55)code for removing cards from the table at the end of the hand
+- [W3schools](https://www.w3schools.com/jsref/jsref_reduce.asp)sum value of the player and dealer card array using reduce.
 
 
 #### Acknowledgements
