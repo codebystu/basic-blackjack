@@ -1,0 +1,50 @@
+# Basic Blackjack
+Find the deployed site [Here](https://codebystu.github.io/basic-blackjack)
+![Responsive](documents/responsive.png)
+Testing was carried out throughout the development of the site, all visual components and layout design were viewed on a variety of screen sizes before during and after styling using Google Dev Tools in the Chrome browser, and following the completion of each page further testing was carried out on Firefox and Edge on my laptop and Safari on an iphone 11, iphone 6s and ipad air 2, both for a visual check of layout and to test all feature and link functionality.
+Javascript functions were tested using JSHint, step through with [Python tutor](https://pythontutor.com/javascript.html#mode=edit) and heavy use of console log to visualise what data was resulting as code was developed. Final Javasript syntax checking with Esprima.
+## User Satisfaction
+    
+## Manual Testing
+### Feature Tests
+#### Header
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| Logo | Click Logo | Load / refresh Home page | Home page loaded / refreshed |
+
+### Visual Tests
+#### Screen Size Responsive Elements
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+
+
+## Automated Testing
+### Accessibility
+#### Colour Scheme
+
+#### Screen Readers
+[WAVE]
+### Lighthouse Performance
+#### Initial Tests
+
+- _Desktop_
+ 
+- _Mobile_
+   
+### W3Validator HTML
+
+### Jigsaw Validator CSS
+
+### JSLint
+
+### Esprima
+
+## Bugs
+| Bug | Cause | Fix Applied | Fix Succesful? |
+| --- | --- | --- | --- |
+
+
+
+
+
+## Interesting Findings

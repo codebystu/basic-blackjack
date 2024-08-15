@@ -16,7 +16,7 @@ I used [Google Fonts](https://fonts.google.com/) to select "Oswald" as the main 
 ### User Stories
 -   First time visitors and users who don't know how to play blackjack, will want to be informed of the rules and how to play, they may wish to refer back to the rules during gameplay to check on something they have forgotten or do not understand
 -   Users will want to be able to start a new game, with all parameters reset to the initial state of gameplay at any time.
--   Users will want to see a propmt message at key points in the development of a round, so that they know either what they need to do, or what the resulting outcome of gameplay is.
+-   Users will want to see a prompt message at key points in the development of a round, so that they know either what they need to do, or what the resulting outcome of gameplay is.
 -   Users will need to be able to see their current bankroll number to assess the level of stake they can afford, they will want to be able to see their current level of stake and to be able to increase and decrease their stake as they wish.
 -   Users will need to be able to initiate the dealing of the cards once they are happy with their level of stake.
 -   If the user fails to select a stake or tries to stake more than they have in their bankroll, they need to be informed of the error, so they can change their course of action.
@@ -130,10 +130,10 @@ https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
 - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL)
 
 ### Code
-- [geeks for geeks](https://www.geeksforgeeks.org/how-to-delay-a-javascript-function-call-using-javascript/)article used to create illusion of card dealing animation, add anticipation and allow time to read in game messaging.
-- [Stack Overflow](https://stackoverflow.com/questions/67691159/addeventlistenerclick-function-once-true-firing-multiple-times-in-the)this thread helped me solve the bug with stake doubling and cards being dealt multiple times which I initially thought was bubbling.
-- [Medium](https://javascript.plainenglish.io/how-to-remove-html-elements-by-class-name-b0288988dd55)code for removing cards from the table at the end of the hand
-- [W3schools](https://www.w3schools.com/jsref/jsref_reduce.asp)sum value of the player and dealer card array using reduce.
+- [geeks for geeks](https://www.geeksforgeeks.org/how-to-delay-a-javascript-function-call-using-javascript/) article used to create illusion of card dealing animation, add anticipation and allow time to read in game messaging.
+- [Stack Overflow](https://stackoverflow.com/questions/67691159/addeventlistenerclick-function-once-true-firing-multiple-times-in-the) this thread helped me solve the bug with stake doubling and cards being dealt multiple times which I initially thought was bubbling.
+- [Medium](https://javascript.plainenglish.io/how-to-remove-html-elements-by-class-name-b0288988dd55) code for removing cards from the table at the end of the hand
+- [W3schools](https://www.w3schools.com/jsref/jsref_reduce.asp) sum value of the player and dealer card array using reduce.
 
 
 #### Acknowledgements
