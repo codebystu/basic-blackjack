@@ -4,19 +4,51 @@ Find the deployed site [Here](https://codebystu.github.io/basic-blackjack)
 Testing was carried out throughout the development of the site, all visual components and layout design were viewed on a variety of screen sizes before during and after styling using Google Dev Tools in the Chrome browser, and following the completion of each page further testing was carried out on Firefox and Edge on my laptop and Safari on an iphone 11, iphone 6s and ipad air 2, both for a visual check of layout and to test all feature and link functionality.
 Javascript functions were tested using JSHint, step through with [Python tutor](https://pythontutor.com/javascript.html#mode=edit) and heavy use of console log to visualise what data was resulting as code was developed. Final Javasript syntax checking with Esprima.
 ## User Satisfaction
+-   User Story fulfilment
+    1. The rules and instructions on how to play are accessible by clicking the "How to play" button. They can be refered to during gameplay without having to exit the game.
+    2. Users can start a new game at any time by pressing the "New Game" button. This resets all parameters back to the initial game state.
+    3. Users are prompted to take action and informed of outcomes through the "message-box" div in the HTML file. With Javascript updating the messaging accordingly at different phases of the game.
+    4. Users can see their current bankroll value at the bottom of the playing area, this is always visible and updates accordingly at the end of a hand and during staking. Similarly the users current stake level is always in view, and resets to 0 at the end of each hand.
+    5. There is no time limit to the staking phase of the game, the user has to initiate the next phase of the game by clicking "Deal"
+    6.  Alerts are used to inform the user if they try to make an action which is against the rules i.e. deal without staking, or staking more than they have in their bankroll
+    7.  During the initial deal cards appear one at a time alternately between player and dealer
+    8.  The value of player and dealer hands are clearly displayed in the corresponding named areas on the gameboard.
+    9.  There is no time limit to the user choosing whether to "Hit" for an extra card or "Stand" on their current value. The next phase of the game only initiates when the user clicks "Stand"
+    10. The automated dealers hand phase of the game plays out one card at a time adding excitement and anticipation.
+    11. The "message-box" div informs the user of the outcome of the hand and the amount won, lost, or returned in the event of a tie.
+    12. The user bankroll is updated with winnings or returned stake after the hand outcome messaging.
+    13. Hand values remain visible after the messaging is complete so that users who miss the messaging will still be able to see the result of the previous hand
+    14. An alert message informs the user when they lose their final chips and have no bankroll left
+    15. The site is ad free
     
 ## Manual Testing
 ### Feature Tests
-#### Header
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | Logo | Click Logo | Load / refresh Home page | Home page loaded / refreshed |
-
+| How to play button | Hover over button | colours invert | colours invert |
+| How to play button | click | Rules are displayed | rules are displayed |
+| Close rules button | Hover over button | colours invert | colours invert |
+| Close rules button | click | Rules are hidden | rules are hidden |
+| New Game button | Hover over button | button turns blue | button turns blue |
+| New Game Button | click | Bankroll set to 20, cards cleared from table and staking buttons visible | Bankroll set to 20, cards cleared from table and staking buttons visible |
+| + button | hover over button | button turns blue | button turns blue |
+| - button | hover over button | button turns blue | button turns blue |
+| Deal button | hover over button | button turns blue | button turns blue |
+| + button | click | stake increases by one and bankroll decreases by one | stake increases by one and bankroll decreases by one |
+| - button | click | stake decreases by one and bankroll increases by one | stake decreases by one and bankroll increases by one |
+| Deal button | click | staking buttons disappear, 3 cards are dealt, hit and stand buttons appear | staking buttons disappear, 3 cards are dealt, hit and stand buttons appear |
+| hit and stand buttons | hover over button | button turns blue | button turns blue |
+| Hit button | click | Adds player card and increments score | Adds player card and increments score |
+| Stand button | click | removes hit and stand buttons and plays dealer hand | removes hit and stand buttons and plays dealer hand |
+| Alerts | when alert is triggered through gameplay | appropriate alert is displayed | appropriate alert is displayed |
+| Codebystu link in footer | click | opens new window and loads codebystu github page | opens new window and loads codebystu github page |
 ### Visual Tests
 #### Screen Size Responsive Elements
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
-
+| Text in rules section | when opening on mobile | text size reduced to fit on screen | text size reduced to fit on screen |
+| Card graphic on screen |  when opening on mobile | size reduced to fit on screen | size reduced to fit on screen |
 
 ## Automated Testing
 ### Accessibility
@@ -40,6 +72,8 @@ Javascript functions were tested using JSHint, step through with [Python tutor](
 ### Esprima
 
 ## Bugs
+
+There are no known bugs remaining within the site
 | Bug | Cause | Fix Applied | Fix Succesful? |
 | --- | --- | --- | --- |
 

@@ -14,21 +14,21 @@ I used [Google Fonts](https://fonts.google.com/) to select "Oswald" as the main 
 
 
 ### User Stories
--   First time visitors and users who don't know how to play blackjack, will want to be informed of the rules and how to play, they may wish to refer back to the rules during gameplay to check on something they have forgotten or do not understand
--   Users will want to be able to start a new game, with all parameters reset to the initial state of gameplay at any time.
--   Users will want to see a prompt message at key points in the development of a round, so that they know either what they need to do, or what the resulting outcome of gameplay is.
--   Users will need to be able to see their current bankroll number to assess the level of stake they can afford, they will want to be able to see their current level of stake and to be able to increase and decrease their stake as they wish.
--   Users will need to be able to initiate the dealing of the cards once they are happy with their level of stake.
--   If the user fails to select a stake or tries to stake more than they have in their bankroll, they need to be informed of the error, so they can change their course of action.
--   During the card dealing phase the user will want to see the cards revealed one at a time as this adds anticipation and excitement to the game,
--   The user will want to see a numerical display of their score, which accounts for the value of non numerical cards (J,Q,K,A) and will need to see the variable score with the A representing a value of either 1 or 11, this will aid in the decision of whether or not to "hit" and take an extra card.
--   Users will want to choose the point at which they end theior turn.
--   During the dealers turn phase of the game users will want to see the cards play out one at a time and the dealers score to increment accordingly.
--   At the point where the dealer hand reaches its end the user will want to receive messaging as to the outcome of the hand, whether they have won or lost and also the amount they have won or lost.
--   At the end of the hand users will expect their bankroll to be updated if they have won and prompted to play another hand.
--   If the user misses the final win/push/lose messaging for any reason (such as if they are playing whilst doing something else) thay may still wish to know if they won or lost the previous hand.
--   When the player has no funds left in their bankroll, they will need to receive a message that they have lost all their money.
--   As the creator of the site, I want to be able to play blackjack without annoying adverts intruding on gameplay which you get on all commercially available apps.
+1.  First time visitors and users who don't know how to play blackjack, will want to be informed of the rules and how to play, they may wish to refer back to the rules during gameplay to check on something they have forgotten or do not understand
+2.   Users will want to be able to start a new game, with all parameters reset to the initial state of gameplay at any time.
+3.   Users will want to see a prompt message at key points in the development of a round, so that they know either what they need to do, or what the resulting outcome of gameplay is.
+4.   Users will need to be able to see their current bankroll number to assess the level of stake they can afford, they will want to be able to see their current level of stake and to be able to increase and decrease their stake as they wish.
+5.   Users will need to be able to initiate the dealing of the cards once they are happy with their level of stake.
+6.   If the user fails to select a stake or tries to stake more than they have in their bankroll, they need to be informed of the error, so they can change their course of action.
+7.   During the card dealing phase the user will want to see the cards revealed one at a time as this adds anticipation and excitement to the game,
+8.   The user will want to see a numerical display of their score, which accounts for the value of non numerical cards (J,Q,K,A) and will need to see the variable score with the A representing a value of either 1 or 11, this will aid in the decision of whether or not to "hit" and take an extra card.
+9.   Users will want to choose the point at which they end their turn.
+10.   During the dealers turn phase of the game users will want to see the cards play out one at a time and the dealers score to increment accordingly.
+11.   At the point where the dealer hand reaches its end the user will want to receive messaging as to the outcome of the hand, whether they have won or lost and also the amount they have won or lost.
+12.   At the end of the hand users will expect their bankroll to be updated if they have won and prompted to play another hand.
+13.   If the user misses the final win/push/lose messaging for any reason (such as if they are playing whilst doing something else) thay may still wish to know if they won or lost the previous hand.
+14.   When the player has no funds left in their bankroll, they will need to receive a message that they have lost all their money.
+15.   As the creator of the site, I want to be able to play blackjack without annoying adverts intruding on gameplay which you get on all commercially available apps.
     
 
 ### Original wireframe design
@@ -79,7 +79,10 @@ https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
 ![post play](documents/postplay.png)
 - End game
     -   When the player loses all of their bankroll the game ends at the end of that hand and the "You lost all your chips" alert is displayed. On clearing the alert, the only button available to the user is "New Game"
-![You lost](documents/youlost.png) 
+![You lost](documents/youlost.png)
+- Footer
+    - The page footer contains a link to the site owners github page, it opens in a new window and allows the user to see more of the site owners work
+![footer](documents/footer.png)
 - Custom 404 page
     - This feature gives an error message on a page styled in the theme of the rest of the site, with a link to get the user back to the main landing page. Useful to users who follow a broken link or if they encounter some other error, they can get back to the main site easily.
 ![404 page](documents/404page.png)
@@ -130,9 +133,9 @@ https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
 - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL)
 
 ### Code
-- [geeks for geeks](https://www.geeksforgeeks.org/how-to-delay-a-javascript-function-call-using-javascript/) article used to create illusion of card dealing animation, add anticipation and allow time to read in game messaging.
+- [geeks for geeks](https://www.geeksforgeeks.org/how-to-delay-a-javascript-function-call-using-javascript/) article used to create illusion of card dealing animation, add anticipation and allow time to read in-game messaging.
 - [Stack Overflow](https://stackoverflow.com/questions/67691159/addeventlistenerclick-function-once-true-firing-multiple-times-in-the) this thread helped me solve the bug with stake doubling and cards being dealt multiple times which I initially thought was bubbling.
-- [Medium](https://javascript.plainenglish.io/how-to-remove-html-elements-by-class-name-b0288988dd55) code for removing cards from the table at the end of the hand
+- [Medium](https://javascript.plainenglish.io/how-to-remove-html-elements-by-class-name-b0288988dd55) code for removing cards from the table at the end of the hand.
 - [W3schools](https://www.w3schools.com/jsref/jsref_reduce.asp) sum value of the player and dealer card array using reduce.
 
 
