@@ -161,13 +161,8 @@ Javascript functions were tested using JSHint, step through with [Python tutor](
 
 ## Automated Testing
 ### Accessibility
-#### Colour Scheme
-
-#### Screen Readers
-[WAVE]
+[WAVE](https://wave.webaim.org/report#/https://codebystu.github.io/basic-blackjack/) found no accessibility issues on the site
 ### Lighthouse Performance
-#### Initial Tests
-
 - Desktop performance score was 100% across the board for the main game page.  The 404 page scored only 80% for SEO due to a missing meta description and the link back to the home page was not descriptive. Afetr updating both of these issues it scores 100% across the board.
 ![New 404 message](documents/new404.png)
 ![lighthouse score](documents/dt.png)
