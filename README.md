@@ -47,20 +47,20 @@ The simple gameplay area is small enough that it will not require any change for
 ![rules overlay](documents/rules.png)
 - Gameboard
     - The gameboard is the main part of index.html and is visible upon loading the webpage. It shows the features which are always visible, Dealer Score, Player Score, Current Stake amount (this isn't labelled and simply shows 0), Bankroll and the New Game button.
-    It also shows 2 cards below the dealer score and 2 above the player score, both hands of cards show a 10 and an Ace which represents a score of Blackjack (21 in 2 cards). Showing this layout upon load makes the page quite intuitive.  Anyone who has played blackjack will online or at a live table will recognise this layout and understand what the sections represent.  The only clickable button in the game area at this phase is the New Game button at the bottom. When the user hovers over it turns blue to highlight that it is clickable.  Upon clicking the user is taken to the staking phase of the game.
+    It also shows 2 cards below the dealer score and 2 above the player score, both hands of cards show a 10 and an Ace which represents a score of Blackjack (21 in 2 cards). Showing this layout upon load makes the page quite intuitive.  Anyone who has played blackjack online or at a live table will recognise this layout and understand what the sections represent.  The only clickable button in the game area at this phase is the New Game button at the bottom. When the user hovers over it turns blue to highlight that it is clickable.  Upon clicking the user is taken to the staking phase of the game.
 ![gameboard](documents/gameboard.png)
 - Staking game phase
-    - After pressing the new game button the cards from the previous hand are cleared from the table, a message is displayed beneath PLayer Score, prompting the user to "Place your bet" the 3 stake selection buttons appear beneath the stake-box and the bankroll is credited with an initial amount of 20. THe buttons all highlight in blue when the user hovers over them, + and - will increment the stake up and down by 1 at a time on each click and have the inverse effect on bankroll i.e stake increases by 1 and bankroll decreases by 1.  If the user has selected a stake and clicks on the Deal button they will be taken to the initial deal phase of the game.
+    - After pressing the new game button the cards from the previous hand are cleared from the table, a message is displayed beneath PLayer Score, prompting the user to "Place your bet" the 3 stake selection buttons appear beneath the stake-box and the bankroll is credited with an initial amount of 20. The buttons all highlight in blue when the user hovers over them, + and - will increment the stake up and down by 1 at a time on each click and have the inverse effect on bankroll i.e stake increases by 1 and bankroll decreases by 1.  If the user has selected a stake and clicks on the Deal button they will be taken to the initial deal phase of the game.
 
 ![staking](documents/placebet.png)
 ![increment stake](documents/incrementstake.png)
 - Player warning alerts
-    - THere are two alerts in the staking phase which are triggered if the user tries to do something which prevents them from moving through the game.  If the user tries to reduce stake below 1 or clicks deasl without selecting a stake, the minimum stake alert is shown.  If the user tries to increase their stake to a higher amount than their bankroll, the bankroll too low alert is triggered.
+    - There are two alerts in the staking phase which are triggered if the user tries to do something which prevents them from moving through the game.  If the user tries to reduce stake below 1 or clicks deal without selecting a stake, the minimum stake alert is shown.  If the user tries to increase their stake to a higher amount than their bankroll, the bankroll too low alert is triggered.
 
 ![minimum stake alert](documents/minimumstake.png)
 ![bankroll low alert](documents/bankrolltoolow.png)
 - Initial deal screen
-    - Once Deal has been correctly the staking buttons disappear, two cards are dealt to the player and one to the dealer.  The dealer and player score values are calculated and displayed iun the corresponding areas on the screen, and the player buttons Hit and Stand are displayed where the staking buttons used to be.  The buttons highlight blue when hovered, in keeping with all the gameplay buttons. clicking Hit will add another card to the player hand, the player can hit as many times as they like until they go over a score of 21, which will automatically end the hand and they will lose their stake.
+    - Once a Deal click has been validated the staking buttons disappear, two cards are dealt to the player and one to the dealer.  The dealer and player score values are calculated and displayed in the corresponding areas on the screen, and the player buttons Hit and Stand are displayed where the staking buttons used to be.  The buttons highlight blue when hovered, in keeping with all the gameplay buttons. clicking Hit will add another card to the player hand, the player can hit as many times as they like until they go over a score of 21, which will automatically end the hand and they will lose their stake.
 
 ![initial deal](documents/initialdeal.png)
 -   Handling Aces
@@ -110,8 +110,98 @@ https://github.com/user-attachments/assets/606d7e39-f08d-4086-b4ec-5b8b30bc827d
 - [JSLint](https://www.jslint.com/) for javascript validation
 - [Esprima](https://esprima.org/demo/validate.html) for javascript validation
 ## Testing
- Testing documentation can be found on the following link
-![Testing](TESTING.md)
+Testing was carried out throughout the development of the site, all visual components and layout design were viewed on a variety of screen sizes before during and after styling using Google Dev Tools in the Chrome browser, and following the completion of each page further testing was carried out on Firefox and Edge on my laptop and Safari on an iphone 11, iphone 6s and ipad air 2, both for a visual check of layout and to test all feature and link functionality.
+Javascript functions were tested using JSHint, step through with [Python tutor](https://pythontutor.com/javascript.html#mode=edit) and heavy use of console log to visualise what data was resulting as code was developed. Final Javasript syntax checking with Esprima.
+## User Satisfaction
+-   User Story fulfilment
+    1. The rules and instructions on how to play are accessible by clicking the "How to play" button. They can be refered to during gameplay without having to exit the game.
+    2. Users can start a new game at any time by pressing the "New Game" button. This resets all parameters back to the initial game state.
+    3. Users are prompted to take action and informed of outcomes through the "message-box" div in the HTML file. With Javascript updating the messaging accordingly at different phases of the game.
+    4. Users can see their current bankroll value at the bottom of the playing area, this is always visible and updates accordingly at the end of a hand and during staking. Similarly the users current stake level is always in view, and resets to 0 at the end of each hand.
+    5. There is no time limit to the staking phase of the game, the user has to initiate the next phase of the game by clicking "Deal"
+    6.  Alerts are used to inform the user if they try to make an action which is against the rules i.e. deal without staking, or staking more than they have in their bankroll
+    7.  During the initial deal cards appear one at a time alternately between player and dealer
+    8.  The value of player and dealer hands are clearly displayed in the corresponding named areas on the gameboard.
+    9.  There is no time limit to the user choosing whether to "Hit" for an extra card or "Stand" on their current value. The next phase of the game only initiates when the user clicks "Stand"
+    10. The automated dealers hand phase of the game plays out one card at a time adding excitement and anticipation.
+    11. The "message-box" div informs the user of the outcome of the hand and the amount won, lost, or returned in the event of a tie.
+    12. The user bankroll is updated with winnings or returned stake after the hand outcome messaging.
+    13. Hand values remain visible after the messaging is complete so that users who miss the messaging will still be able to see the result of the previous hand
+    14. An alert message informs the user when they lose their final chips and have no bankroll left
+    15. The site is ad free
+    
+## Manual Testing
+### Feature Tests
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| Logo | Click Logo | Load / refresh Home page | Home page loaded / refreshed |
+| How to play button | Hover over button | colours invert | colours invert |
+| How to play button | click | Rules are displayed | rules are displayed |
+| Close rules button | Hover over button | colours invert | colours invert |
+| Close rules button | click | Rules are hidden | rules are hidden |
+| New Game button | Hover over button | button turns blue | button turns blue |
+| New Game Button | click | Bankroll set to 20, cards cleared from table and staking buttons visible | Bankroll set to 20, cards cleared from table and staking buttons visible |
+| + button | hover over button | button turns blue | button turns blue |
+| - button | hover over button | button turns blue | button turns blue |
+| Deal button | hover over button | button turns blue | button turns blue |
+| + button | click | stake increases by one and bankroll decreases by one | stake increases by one and bankroll decreases by one |
+| - button | click | stake decreases by one and bankroll increases by one | stake decreases by one and bankroll increases by one |
+| Deal button | click | staking buttons disappear, 3 cards are dealt, hit and stand buttons appear | staking buttons disappear, 3 cards are dealt, hit and stand buttons appear |
+| hit and stand buttons | hover over button | button turns blue | button turns blue |
+| Hit button | click | Adds player card and increments score | Adds player card and increments score |
+| Stand button | click | removes hit and stand buttons and plays dealer hand | removes hit and stand buttons and plays dealer hand |
+| Alerts | when alert is triggered through gameplay | appropriate alert is displayed | appropriate alert is displayed |
+| Codebystu link in footer | click | opens new window and loads codebystu github page | opens new window and loads codebystu github page |
+### Visual Tests
+#### Screen Size Responsive Elements
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| Text in rules section | when opening on mobile | text size reduced to fit on screen | text size reduced to fit on screen |
+| Card graphic on screen |  when opening on mobile | size reduced to fit on screen | size reduced to fit on screen |
+
+## Automated Testing
+### Accessibility
+#### Colour Scheme
+
+#### Screen Readers
+[WAVE]
+### Lighthouse Performance
+#### Initial Tests
+
+- Desktop performance score was 100% across the board for the main game page.  The 404 page scored only 80% for SEO due to a missing meta description and the link back to the home page was not descriptive. Afetr updating both of these issues it scores 100% across the board.
+![New 404 message](documents/new404.png)
+![lighthouse score](documents/dt.png)
+- Mobile performance scores 99% and 100% for the other three areas
+### W3Validator HTML
+-   No issues were found
+
+### Jigsaw Validator CSS
+- No isues were found
+
+### JSLint
+-   The linter threw up warnings where I used "let" instead of "var" to declare some variables, but I wanted these variables to only be accessible within their respective codeblocks, so these warnings were ignored.
+-   The linter took exception to using '' instead of "", these warnings were ignored as did not effect syntax.
+-   The linter was unable to complete its operation on the clearCards function, I assume that this is due to it running a for loop across an element on the DOM which the linter does not have access to, the function itself works as intended.
+
+### Esprima
+- Showed all Javascript syntax to be good with no warnings or errors
+
+## Bugs
+
+There are no known bugs remaining within the site
+| Bug | Cause | Fix Applied | Fix Succesful? |
+| --- | --- | --- | --- |
+| Stake incrementing by 2 on second hand and by 3 on third hand etc | Bubbling? | stopPropagation | No |
+| Stake incrementing by 2 on second hand and by 3 on third hand etc | Event listener error | dont use for loop to add event listener | yes |
+| Incorrect hand result when player has an ace | value in player score box is a string containing two numbers '7 / 17' | set value to sum only when player clicks "stand" | yes |
+| Incorrect handling of blackjack in playerCard | blackjack only relevant on second card | create secondCard function to handle blackjack event | yes |
+
+## Interesting Findings
+The bug which manifested in stake doubling then trebling etc also affected the number of cards being dealt on the initial deal.  I had initially used a for loop copied from the Love Math project to add the event listeners to the player buttons. 
+Whilst trying to find the solution I was being directed to articles on bubbling as my question to google was along the lines of "function being called multiple times" after trying the solution suggested in multiple articles (use stopPropagation) and not finding a solution, I tried switching my question on google search to query the event listener instead of the function. Key Learning - rephrase your question focussing on a diferent element.
+One article suggested removing the event listener and then reapplying it, as each time the function including the event listener was called it added another on top, so I had multiple event listeners all being called at once, this was confirmed by console logging the output of the buttons.  I was unable to get this to work, but the article used a line of code to add each event listener instead of a for loop.
+I switched my code from a for loop to individual lines for each button and this solved the bug without the need to remove the event listners at all.
+Further reading has enlightened me that the for loop was indeed layering up multiple event listeners each time the function was called. A for loop should only be used to add event listeners if the elements are created dynamically with javascript. My elements are always there, they are just hidden / revealed by javascript changing the CSS style display to none / block.
 
 ## Deployment
 
